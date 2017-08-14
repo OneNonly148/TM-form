@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'main#mainmenu'
+  get '/quote'    , to: 'main#quoteform'
+  get '/location' , to: 'main#locationpage'
+  get '/slg'      , to: 'main#slgpage'
+  get '/addinfo'  , to: 'main#addinfo'
 end
