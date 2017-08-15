@@ -1,57 +1,96 @@
 <br/><br/><table class="form-flow">
   <tr id="steps"></tr>
 </table><br/><br/>
+
 <form class="form_1">
-  <h2>Site A Details</h2><hr/><br/>
-  <input type="text" placeholder="Site Name" class="form" onChange="clickMe();"></input><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Location</option>
-    <option>Johor</option>
-    <option>Pahang</option>
-  </select><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select UPE</option>
-    <option>CBA</option>
-    <option>Non CBA</option>
-  </select><br/><br/>
-  <h2>Site B Details  </h2><hr/><br/>
-  <input type="text" placeholder="Site Name" class="form"></input><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Location</option>
-    <option>Johor</option>
-    <option>Pahang</option>
-  </select><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select UPE</option>
-    <option>CBA</option>
-    <option>Non CBA</option>
-  </select><br/><br/><hr/>
+  <table class="form-table">
+    <tr class="form-row">
+      <td >
+        <h2>Site A Details</h2><hr/><br/>
+        <input type="text" placeholder="Site Name" class="form"></input><br/><br/>
+        <select type="dropdown" id="state_1" class="form" onchange="handleChange(1, $(this).val());">
+        </select><br/><br/>
+        <select type="dropdown" id="loc_1" class="form" onchange="handleChange(2, $(this).val());">
+        </select><br/><br/>
+        <div id="cat_1"></div><br/>
+        <select type="text" class="form">
+          <option>Select UPE configuration</option>
+          <option>Shared</option>
+          <option>Dedicated</option>
+          <option>-</option>
+        </select>
+      </td>
+      <td>
+        <h2>Site B Details  </h2><hr/><br/>
+        <input type="text" placeholder="Site Name" class="form"></input><br/><br/>
+        <select type="dropdown" id="state_2" class="form" onchange="handleChange(3, $(this).val());">
+        </select><br/><br/>
+        <select type="dropdown" id="loc_2" class="form" onchange="handleChange(4, $(this).val());">
+        </select><br/><br/>
+        <div id="cat_2"></div><br/>
+        <select type="text" class="form">
+          <option>Select UPE configuration</option>
+          <option>Shared</option>
+          <option>Dedicated</option>
+          <option>-</option>
+        </select>
+      </td>
+    </tr>
+  </table><br/><br/><hr/>
   <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(1);"></input>
 </form>
 
 <form class="form_2">
-  <h1>Service</h1><hr/>
-  <input type="text" placeholder="Speed" class="form"></input><br/><br/>
-  <input type="text" placeholder="Class of Service" class="form"></input><br/><br/>
-  <input type="text" placeholder="Service Level" class="form"></input><br/><br/>
-  <input type="text" placeholder="Contract" class="form"></input><br/><br/>
-  <input type="text" placeholder="Inter-Link Category" class="form"></input><br/><br/>
+  <h2>Service</h2><hr/>
+  Speed <input type="text" id="amount-speed"></input><br/><br/><div class="slide"><div id="slide-speed"></div></div><br/><br/>
+  <select type="dropdown" class="form">
+    <option>Select Class of Service</option>
+    <option>Multimedia</option>
+    <option>Mission Critical</option>
+    <option>Standard Data</option>
+    <option>Economy</option>
+  </select><br/><br/>
+  <select type="dropdown" class="form">
+    <option>Select Service Level</option>
+    <option>SLA 99.0</option>
+    <option>SLG 99.5</option>
+    <option>SLG 99.7</option>
+    <option>SLG 99.9</option>
+    <option>SLG 99.99</option>
+    <option>SLG 99.997</option>
+  </select><br/><br/>
+  Contract <input type="text" id="amount-contract"></input><br/><br/><div class="slide"><div id="slide-contract"></div></div><br/><br/>
+  <select type="dropdown" class="form">
+    <option>Select Inter-Link Category</option>
+    <option>Intra Metro</option>
+    <option>Inter Metro</option>
+    <option>Inter Region</option>
+  </select><br/><br/>
   <input type="text" placeholder="Discount" class="form"></input><br/><br/>
-  <h1>Additional Fiber</h1><hr/><br/>
-  <input type="text" placeholder="Type" class="form"></input><br/><br/>
-  <input type="text" placeholder="Distance" class="form"></input><br/><br/><hr/>
-  <input type="button" value="Next" class="btn btn-primary"></input>
+  <h2>Additional Fiber</h2><hr/><br/>
+  <select type="dropdown" class="form">
+    <option>Select Inter-Link Category</option>
+    <option>New</option>
+    <option>Existing</option>
+  </select><br/><br/>
+  Distance <input type="text" id="amount-distance"></input><br/><br/><div class="slide"><div id="slide-distance"></div></div><br/><br/>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(2);"></input>
 </form>
 
 <form class="form_3">
-  <h1>Router</h1><hr/>
-  <input type="text" placeholder="Brand" class="form"></input><br/><br/>
+  <h2>Router</h2><hr/>
+  <select type="dropdown" class="form">
+    <option>Select Router Brand</option>
+    <option>CISCO</option>
+    <option>Juniper</option>
+    <option>3Com</option>
+  </select><br/><br/>
   <input type="text" placeholder="BOM Cost" class="form"></input><br/><br/>
   <input type="text" placeholder="Quantity" class="form"></input><br/><br/>
   <input type="text" placeholder="Discount" class="form"></input><br/><br/>
-  <h1>Internal Wiring</h1><hr/>
+  <h2>Internal Wiring</h2><hr/>
   <input type="text" placeholder="Internal Wiring" class="form"></input><br/><br/>
-  <input type="button" value="Next" class="btn btn-primary"></input>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(3);"></input>
 </form>
 
 <form class="form_4">
@@ -72,16 +111,52 @@
         <td>Total Recurring Monthly Charge (+Discount +Tax)</td>
         <td>RM Something</td>
     </tr>
-  </table><hr/><br/>
-  <h1>Contact Information</h1>
-  <input type="text" placeholder="Name" class="form"></input><br/><br/>
-  <input type="text" placeholder="Phone No." class="form"></input><br/><br/>
-  <input type="text" placeholder="Fax No." class="form"></input><br/><br/>
-  <input type="text" placeholder="Email" class="form"></input><br/><br/><hr/>
-  <input type="button" value="Submit" class="btn btn-primary"></input>
+  </table><br/>
+  <input type="button" value="Submit" class="btn btn-primary" onclick="handleNext(4);"></input>
+  <input type="button" value="Add Location" class="btn btn-primary" onclick="handleNext(4);"></input><hr/><br/>
+  <table class="table-location">
+    <tr>
+        <th>No.</th>
+        <th>Site A</th>
+        <th>Location</th>
+        <th>UPE</th>
+        <th>Site B</th>
+        <th>Location</th>
+        <th>UPE</th>
+        <th>Speed</th>
+        <th>Class of Service</th>
+        <th>Service Level</th>
+        <th>Contract</th>
+        <th>Inter-link</th>
+        <th>Discount</th>
+    </tr>
+    <tr>
+        <td>1</th>
+        <td>Plot 27B</th>
+        <td>CBA</th>
+        <td>Shared</th>
+        <td>Plot 05A</th>
+        <td>CBA</th>
+        <td>Shared</td>
+        <td>100 Mbps</td>
+        <td>Economy</td>
+        <td>SLG 99.7</td>
+        <td>3 Years</td>
+        <td>Inter-link</td>
+        <td>30%</td>
+    </tr>
+  </table>
+  <div class="contact">
+    <h2>Contact Information</h2>
+    <input type="text" placeholder="Name" class="form"></input><br/><br/>
+    <input type="text" placeholder="Phone No." class="form"></input><br/><br/>
+    <input type="text" placeholder="Fax No." class="form"></input><br/><br/>
+    <input type="text" placeholder="Email" class="form"></input><hr/>
+    <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit();"></input>
+  </div>
 </form>
 
 <form class="form_5">
   <p>Final form</p>
-  <p>Display the template version with the filled info... note editable</p>
+  <p>Display the template version with the filled info... not editable.. save to PDF..</p>
 </form>
