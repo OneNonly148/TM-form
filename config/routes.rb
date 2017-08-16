@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'main#mainmenu'
   get '/quote'    , to: 'main#quoteform'
-  get '/location' , to: 'main#locationpage'
+  get '/location' , to: 'main#quoteform2'
   get '/slg'      , to: 'main#slgpage'
   get '/addinfo'  , to: 'main#addinfo'
   get '/load_state', to: 'main#load_state'

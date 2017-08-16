@@ -7,32 +7,32 @@
     <tr class="form-row">
       <td >
         <h2>Site A Details</h2><hr/><br/>
-        <input type="text" placeholder="Site Name" class="form"></input><br/><br/>
+        <input type="text" id="name_1" placeholder="Site Name" class="form"></input><br/><br/>
         <select type="dropdown" id="state_1" class="form" onchange="handleChange(1, $(this).val());">
         </select><br/><br/>
         <select type="dropdown" id="loc_1" class="form" onchange="handleChange(2, $(this).val());">
         </select><br/><br/>
         <div id="cat_1"></div><br/>
-        <select type="text" class="form">
-          <option>Select UPE configuration</option>
-          <option>Shared</option>
-          <option>Dedicated</option>
-          <option>-</option>
+        <select type="text" id="UPE_1" class="form">
+          <option value="0">Select UPE configuration</option>
+          <option value="1">Shared</option>
+          <option value="2">Dedicated</option>
+          <option value="3">-</option>
         </select>
       </td>
       <td>
         <h2>Site B Details  </h2><hr/><br/>
-        <input type="text" placeholder="Site Name" class="form"></input><br/><br/>
+        <input type="text" id="name_2" placeholder="Site Name" class="form"></input><br/><br/>
         <select type="dropdown" id="state_2" class="form" onchange="handleChange(3, $(this).val());">
         </select><br/><br/>
         <select type="dropdown" id="loc_2" class="form" onchange="handleChange(4, $(this).val());">
         </select><br/><br/>
         <div id="cat_2"></div><br/>
-        <select type="text" class="form">
-          <option>Select UPE configuration</option>
-          <option>Shared</option>
-          <option>Dedicated</option>
-          <option>-</option>
+        <select type="text" id="UPE_2" class="form">
+          <option value="0">Select UPE configuration</option>
+          <option value="1">Shared</option>
+          <option value="2">Dedicated</option>
+          <option value="3">-</option>
         </select>
       </td>
     </tr>
@@ -43,35 +43,35 @@
 <form class="form_2">
   <h2>Service</h2><hr/>
   Speed <input type="text" id="amount-speed"></input><br/><br/><div class="slide"><div id="slide-speed"></div></div><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Class of Service</option>
-    <option>Multimedia</option>
-    <option>Mission Critical</option>
-    <option>Standard Data</option>
-    <option>Economy</option>
+  <select id="s_class" type="dropdown" class="form">
+    <option value="0">Select Class of Service</option>
+    <option value="1">Multimedia</option>
+    <option value="2">Mission Critical</option>
+    <option value="3">Standard Data</option>
+    <option value="4">Economy</option>
   </select><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Service Level</option>
-    <option>SLA 99.0</option>
-    <option>SLG 99.5</option>
-    <option>SLG 99.7</option>
-    <option>SLG 99.9</option>
-    <option>SLG 99.99</option>
-    <option>SLG 99.997</option>
+  <select id="s_level" type="dropdown" class="form">
+    <option value="0">Select Service Level</option>
+    <option value="1">SLA 99.0</option>
+    <option value="2">SLG 99.5</option>
+    <option value="3">SLG 99.7</option>
+    <option value="4">SLG 99.9</option>
+    <option value="4">SLG 99.99</option>
+    <option value="5">SLG 99.997</option>
   </select><br/><br/>
   Contract <input type="text" id="amount-contract"></input><br/><br/><div class="slide"><div id="slide-contract"></div></div><br/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Inter-Link Category</option>
-    <option>Intra Metro</option>
-    <option>Inter Metro</option>
-    <option>Inter Region</option>
+  <select id="i_link" type="dropdown" class="form">
+    <option value="0">Select Inter-Link Category</option>
+    <option value="1">Intra Metro</option>
+    <option value="2">Inter Metro</option>
+    <option value="3">Inter Region</option>
   </select><br/><br/>
-  <input type="text" placeholder="Discount" class="form"></input><br/><br/>
+  <input id="s_discount" type="text" placeholder="Discount" class="form"></input><br/><br/>
   <h2>Additional Fiber</h2><hr/><br/>
-  <select type="dropdown" class="form">
-    <option>Select Inter-Link Category</option>
-    <option>New</option>
-    <option>Existing</option>
+  <select id="s_type" type="dropdown" class="form">
+    <option value="0">Select Type</option>
+    <option value="1">New</option>
+    <option value="2">Existing</option>
   </select><br/><br/>
   Distance <input type="text" id="amount-distance"></input><br/><br/><div class="slide"><div id="slide-distance"></div></div><br/><br/>
   <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(2);"></input>
@@ -79,17 +79,17 @@
 
 <form class="form_3">
   <h2>Router</h2><hr/>
-  <select type="dropdown" class="form">
-    <option>Select Router Brand</option>
-    <option>CISCO</option>
-    <option>Juniper</option>
-    <option>3Com</option>
+  <select type="dropdown" id="router" class="form">
+    <option value="0">Select Router Brand</option>
+    <option value="1">CISCO</option>
+    <option value="2">Juniper</option>
+    <option value="3">3Com</option>
   </select><br/><br/>
-  <input type="text" placeholder="BOM Cost" class="form"></input><br/><br/>
-  <input type="text" placeholder="Quantity" class="form"></input><br/><br/>
-  <input type="text" placeholder="Discount" class="form"></input><br/><br/>
+  <input type="text" id="R_BOM" placeholder="BOM Cost" class="form"></input><br/><br/>
+  <input type="text" id="R_Quantity" placeholder="Quantity" class="form"></input><br/><br/>
+  <input type="text" id="R_Discount" placeholder="Discount" class="form"></input><br/><br/>
   <h2>Internal Wiring</h2><hr/>
-  <input type="text" placeholder="Internal Wiring" class="form"></input><br/><br/>
+  <input type="text" id="R_Wiring" placeholder="Internal Wiring" class="form"></input><br/><br/>
   <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(3);"></input>
 </form>
 
@@ -113,7 +113,7 @@
     </tr>
   </table><br/>
   <input type="button" value="Submit" class="btn btn-primary" onclick="handleNext(4);"></input>
-  <input type="button" value="Add Location" class="btn btn-primary" onclick="handleNext(4);"></input><hr/><br/>
+  <input type="button" value="Add Location" class="btn btn-primary" onclick="handleLocation();"></input><hr/><br/>
   <table class="table-location">
     <tr>
         <th>No.</th>
@@ -130,33 +130,44 @@
         <th>Inter-link</th>
         <th>Discount</th>
     </tr>
-    <tr>
-        <td>1</th>
-        <td>Plot 27B</th>
-        <td>CBA</th>
-        <td>Shared</th>
-        <td>Plot 05A</th>
-        <td>CBA</th>
-        <td>Shared</td>
-        <td>100 Mbps</td>
-        <td>Economy</td>
-        <td>SLG 99.7</td>
-        <td>3 Years</td>
-        <td>Inter-link</td>
-        <td>30%</td>
-    </tr>
   </table>
   <div class="contact">
     <h2>Contact Information</h2>
-    <input type="text" placeholder="Name" class="form"></input><br/><br/>
-    <input type="text" placeholder="Phone No." class="form"></input><br/><br/>
-    <input type="text" placeholder="Fax No." class="form"></input><br/><br/>
-    <input type="text" placeholder="Email" class="form"></input><hr/>
+    <input type="text" id="fv_name" placeholder="Name" class="form"></input><br/><br/>
+    <input type="text" id="fv_phone" placeholder="Phone No." class="form"></input><br/><br/>
+    <input type="text" id="fv_fax" placeholder="Fax No." class="form"></input><br/><br/>
+    <input type="text" id="fv_email" placeholder="Email" class="form"></input><hr/>
     <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit();"></input>
   </div>
 </form>
 
 <form class="form_5">
-  <p>Final form</p>
-  <p>Display the template version with the filled info... not editable.. save to PDF..</p>
+  <div class="form-head">
+    <img src='http://3.bp.blogspot.com/-V5rXmZdlkks/V3XcQ5FA3wI/AAAAAAAAFPg/rKEvbRSim9YySSxZ0rvsIfA4ge72E1UzwCK4B/s1600/TM%2Bvector%2Blogo.png' alt="TM Logo" id="form-logo">
+    <br/><label><b>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_name"></label><br/>
+    <label><b>Phone No&nbsp;: </b></label>
+    <label id="f_phone"></label><br/>
+    <label><b>Fax No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_fax"></label><br/>
+    <label><b>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_email"></label><br/><hr/><br/>
+  </div>
+  <table class="table-location">
+    <tr>
+        <th>No.</th>
+        <th>Site A</th>
+        <th>Location</th>
+        <th>UPE</th>
+        <th>Site B</th>
+        <th>Location</th>
+        <th>UPE</th>
+        <th>Speed</th>
+        <th>Class of Service</th>
+        <th>Service Level</th>
+        <th>Contract</th>
+        <th>Inter-link</th>
+        <th>Discount</th>
+    </tr>
+  </table>
 </form>

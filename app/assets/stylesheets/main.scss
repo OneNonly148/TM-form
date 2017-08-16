@@ -88,6 +88,24 @@ table.form-flow{
     background-color: #925205;
   }
 }
+table.form-flow2{
+  padding-left: 4%;
+  text-align: center;
+  td{
+    width: 15em;
+    border-radius: 1em;
+    border: .1em solid #000;
+    padding: 2em;
+    background-color: #E3810B;
+  }
+  td.active{
+    border-radius: 1em;
+    border: .1em solid #000;
+    padding: 2em;
+    color: #fff;
+    background-color: #925205;
+  }
+}
 table.form-table{
   width: 90%;
   padding-left: 10%;
@@ -103,6 +121,7 @@ table.table-location{
   padding-left: 5%;
   width: 95%;
   text-align: center;
+  font-size: .75em;
   th{
     border: .1em solid #000;
     padding: 0.25em;
@@ -121,6 +140,16 @@ table.table-location{
 .slide{
   padding-left: 37.5%;
   width:25%;
+}
+.form-head{
+  text-align: left;
+  padding-left: 20%;
+  width: 60%;
+}
+#form-logo{
+  float: right;
+  height: 8em;
+  width: 8em;
 }
 
 footer{

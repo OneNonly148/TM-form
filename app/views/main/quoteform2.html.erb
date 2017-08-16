@@ -1,0 +1,51 @@
+<br/><br/><table class="form-flow2">
+  <tr id="steps2"></tr>
+</table><br/><br/>
+
+<form class="form_1">
+  <h2>Site Details</h2><hr/><br/>
+  <input type="text" id="name_1" placeholder="Site Name" class="form"></input><br/><br/>
+  <select type="dropdown" id="state_1" class="form" onchange="handleChange(1, $(this).val());">
+  </select><br/><br/>
+  <select type="dropdown" id="loc_1" class="form" onchange="handleChange(2, $(this).val());">
+  </select><br/><br/>
+  <div id="cat_1"></div><br/>
+  <select id="s_level" type="dropdown" class="form">
+    <option value="0">Select Service Level</option>
+    <option value="1">SLA 99.0</option>
+    <option value="2">SLG 99.5</option>
+    <option value="3">SLG 99.7</option>
+    <option value="4">SLG 99.9</option>
+    <option value="4">SLG 99.99</option>
+    <option value="5">SLG 99.997</option>
+  </select><br/><br/>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(1);"></input>
+</form>
+
+<form class="form_2">
+  <h2>Service</h2><hr/><br/>
+  <select id="s_class" type="dropdown" class="form">
+    <option value="0">Select Price Type</option>
+    <option value="1">Entry</option>
+    <option value="2">MSC</option>
+  </select><br/><br/>
+  <input id="s_discount" type="text" placeholder="Discount" class="form"></input><br/><br/>
+  <input type="checkbox">Bundled Items Package</input>
+  <h2>Access Metro E</h2><hr/><br/>
+  <select id="s_level" type="dropdown" class="form">
+    <option value="0">Select Fiber Type</option>
+    <option value="1">New</option>
+    <option value="2">Existing</option>
+  </select><br/><br/>
+  Distance <input type="text" id="amount-distance"></input><br/><br/><div class="slide"><div id="slide-distance"></div></div><br/><br/>
+  Contract <input type="text" id="amount-contract"></input><br/><br/><div class="slide"><div id="slide-contract"></div></div><br/><br/>
+  Speed <input type="text" id="amount-speed"></input><br/><br/><div class="slide"><div id="slide-speed"></div></div><br/><br/>
+  <h2>Router</h2><hr/><br/>
+  <select id="s_type" type="dropdown" class="form">
+    <option value="0">Select Package</option>
+    <option value="1">Premium</option>
+    <option value="2">Connect</option>
+  </select><br/><br/>
+  <input id="s_discount" type="text" placeholder="Brand" class="form"></input><br/><br/>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(2);"></input>
+</form>
