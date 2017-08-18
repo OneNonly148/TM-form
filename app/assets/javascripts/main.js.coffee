@@ -74,8 +74,8 @@ handleStepDisplay = () ->
   $("#steps2").append(
     "<td class="+FormStat1+">1 | Site Details</td>
     <td class="+FormStat2+">2 | Service Details</td>
-    <td class="+FormStat3+">3 | Preview Quotation</td>
-    <td class="+FormStat4+">4 | Quotation Summary</td>")
+    <td class="+FormStat4+">3 | Preview Quotation</td>
+    <td class="+FormStat5+">4 | Quotation Summary</td>")
 #---------------------------------------------------------------
 determineUPE = (val) ->
   console.log "Determining UPE:" +val
@@ -297,6 +297,20 @@ determineLink = (val) ->
     )
   #---------------------------------------------------------------
   else if value == 4
+    $(".contact").dialog()
+  #---------------------------------------------------------------
+  else if value == 5
+    if valLoc == 1
+      $(".form_2").dialog("close")
+      $(".form_4").dialog({ height: 800, width:1000 })
+    else
+      $(".form_4").show()
+      $(".form_2").hide()
+      FormStat2 = ''
+      FormStat4 = 'active'
+    handleStepDisplay()
+  #---------------------------------------------------------------
+  else if value == 6
     $(".contact").dialog()
 #---------------------------------------------------------------
 @handleLocation = () ->

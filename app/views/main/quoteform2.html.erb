@@ -31,6 +31,17 @@
   </select><br/><br/>
   <input id="s_discount" type="text" placeholder="Discount" class="form"></input><br/><br/>
   <input type="checkbox">Bundled Items Package</input>
+  <h2>Value Added Service</h2><hr/><br/>
+  <div class="form-VAS">
+    <input type="checkbox">IPv4 (16 IP)</input><br/>
+    <input type="checkbox">IPv6</input><br/>
+    <input type="checkbox">Additional IP</input><br/>
+    No. of IP :&nbsp;<input type="text" id="IP-in">&nbsp;/ 64</input><br/>
+  </div><hr/>
+  <div class="form-VAS">
+    <input type="checkbox">Border Gateway Protocol (BGP)</input><br/>
+    <input type="checkbox">Bandwidth on Demand | RM 78/Mbps/Day</input><br/>
+  </div>
   <h2>Access Metro E</h2><hr/><br/>
   <select id="s_level" type="dropdown" class="form">
     <option value="0">Select Fiber Type</option>
@@ -47,5 +58,84 @@
     <option value="2">Connect</option>
   </select><br/><br/>
   <input id="s_discount" type="text" placeholder="Brand" class="form"></input><br/><br/>
-  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(2);"></input>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(5);"></input>
+</form>
+
+<form class="form_4">
+  <hr/><table>
+    <tr>
+        <td>Total One Time Charge</td>
+        <td>RM Something</td>
+    </tr>
+    <tr>
+        <td>Total Recurring Monthly Charge</td>
+        <td>RM Something</td>
+    </tr>
+    <tr>
+        <td>Total Recurring Monthly Charge (+Discount)</td>
+        <td>RM Something</td>
+    </tr>
+    <tr>
+        <td>Total Recurring Monthly Charge (+Discount +Tax)</td>
+        <td>RM Something</td>
+    </tr>
+  </table><br/>
+  <input type="button" value="Submit" class="btn btn-primary" onclick="handleNext(6);"></input>
+  <input type="button" value="Add Location" class="btn btn-primary" onclick="handleLocation();"></input><hr/><br/>
+  <table class="table-location">
+    <tr>
+        <th>No.</th>
+        <th>Site Name</th>
+        <th>Price Type</th>
+        <th>Fiber Type</th>
+        <th>Distance</th>
+        <th>Speed</th>
+        <th>Contract</th>
+        <th>Router Package</th>
+        <th>Router Brand</th>
+        <th>Service Level</th>
+        <th>Location</th>
+        <th>Bundle</th>
+        <th>Discount</th>
+    </tr>
+  </table>
+  <div class="contact">
+    <h2>Contact Information</h2>
+    <input type="text" id="fv_name" placeholder="Name" class="form"></input><br/><br/>
+    <input type="text" id="fv_phone" placeholder="Phone No." class="form"></input><br/><br/>
+    <input type="text" id="fv_fax" placeholder="Fax No." class="form"></input><br/><br/>
+    <input type="text" id="fv_email" placeholder="Email" class="form"></input><hr/>
+    <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit();"></input>
+  </div>
+</form>
+
+<form class="form_5">
+  <div class="form-head">
+    <img src='http://3.bp.blogspot.com/-V5rXmZdlkks/V3XcQ5FA3wI/AAAAAAAAFPg/rKEvbRSim9YySSxZ0rvsIfA4ge72E1UzwCK4B/s1600/TM%2Bvector%2Blogo.png' alt="TM Logo" id="form-logo">
+    <br/><label><b>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_name"></label><br/>
+    <label><b>Phone No&nbsp;: </b></label>
+    <label id="f_phone"></label><br/>
+    <label><b>Fax No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_fax"></label><br/>
+    <label><b>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
+    <label id="f_email"></label><br/><hr/><br/>
+  </div>
+  <table class="table-location">
+    <tr>
+        <th>No.</th>
+        <th>Site Name</th>
+        <th>Price Type</th>
+        <th>Fiber Type</th>
+        <th>Distance</th>
+        <th>Speed</th>
+        <th>Contract</th>
+        <th>Router Package</th>
+        <th>Router Brand</th>
+        <th>Service Level</th>
+        <th>Location</th>
+        <th>Bundle</th>
+        <th>Discount</th>
+    </tr>
+  </table>
 </form>
