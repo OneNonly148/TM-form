@@ -15,13 +15,7 @@
 
   <body>
     <img src='http://3.bp.blogspot.com/-V5rXmZdlkks/V3XcQ5FA3wI/AAAAAAAAFPg/rKEvbRSim9YySSxZ0rvsIfA4ge72E1UzwCK4B/s1600/TM%2Bvector%2Blogo.png' alt="TM Logo" id="logo">
-    <ul>
-      <li><%= link_to 'User Guide', root_url, class:"btn" %></li>
-      <li><%= link_to 'Get Quotation', quote_path, class:"btn" %></li>
-      <li><%= link_to 'Location List', location_path, class:"btn" %></li>
-      <li><%= link_to 'SLG Design', slg_path, class:"btn" %></li>
-      <li><%= link_to 'Additional Information', addinfo_path, class:"btn" %></li>
-    </ul>
+    <div class='nav'></div>
     <%= yield %>
     <br/><br/><footer class="footer">
       <p>This website is still in development</p>

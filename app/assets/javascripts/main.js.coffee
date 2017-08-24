@@ -3,6 +3,12 @@ valTemp = ''
 valLoc = ''
 valArr = 1
 
+dataUser = 'Steve'
+dataPassword = 'foobar'
+dataLogin = true
+tempUser = ''
+tempPassword = 'foobar'
+
 valName1  = new Array(10)
 valCat1   = new Array(10)
 valUPE1   = new Array(10)
@@ -25,19 +31,48 @@ valRquantity  = new Array(10)
 valRdiscount  = new Array(10)
 valRwiring    = new Array(10)
 
+valStatus = "Pending"
+
+valO = 1
+valM = 1
+valR = 1
+valMD = 1
+valRD = 1
+valT = 1
+valTD = 1
+valTDT = 1
+
 FormStat1 = 'active'
 FormStat2 = ''
 FormStat3 = ''
 FormStat4 = ''
 FormStat5 = ''
 #---------------------------------------------------------------
-window.onload =->
-  console.log "Im online"
+hideAll = ()->
+  $(".form_1").hide()
   $(".form_2").hide()
   $(".form_3").hide()
   $(".form_4").hide()
   $(".form_5").hide()
   $(".contact").hide()
+  $(".profile").hide()
+#---------------------------------------------------------------
+window.onload =->
+  console.log "Im online"
+  $.ajax
+    url: '/stat.json'
+    type: 'get'
+    success: (result)->
+      console.log "Check login:" +result
+      if result
+        hideAll()
+        $(".login").hide()
+        $(".profile").show()
+    error: (error)->
+      console.log "Error login check"
+  hideAll()
+  $(".nav").empty()
+  $(".nav").append("<ul class='nav'><img src='http://estes-park.com/sites/all/themes/estesparktwo/images/hamburger.png' id='logo-home' onclick='handleMenu(1);'></ul>")
   $("#cat_1").empty()
   $("#cat_1").append("<input type='text' placeholder='Location Category' class='form' disabled></input>")
   $("#cat_2").empty()
@@ -62,20 +97,78 @@ window.onload =->
     error: (error) ->
       console.log "Error: Loading States Value"
 #---------------------------------------------------------------
+@handleLogin = () ->
+  tempUser = $("#user").val()
+  tempPassword = $("#password").val()
+  console.log "User: " +tempUser
+  console.log "Pass: " +tempPassword
+  $.ajax
+    url: '/login.json'
+    type: 'get'
+    data:
+      id: tempUser
+      pass:tempPassword
+    success: (result)->
+      console.log "Return: " +JSON.stringify result
+      if result
+        console.log "Logged in"
+        dataLogin = true
+        hideAll()
+        $(".login").hide()
+        $(".profile").show()
+      else
+        console.log "Incorrect credentials"
+    error: (error)->
+      console.log "Error while login"
+#---------------------------------------------------------------
+@handleLogout = ()->
+  console.log "Logging out"
+  dataLogin = false
+  hideAll()
+  $(".login").show()
+  handleMenu(0)
+  $.ajax
+    url: '/logout.json'
+    type: 'get'
+    success: (result)->
+      console.log "Logout:" +JSON.stringify result
+    error: (error) ->
+      console.log "Error logout"
+#---------------------------------------------------------------
+@handleMenu = (value) ->
+  if value == 1
+    if dataLogin
+      $(".nav").empty()
+      $(".nav").append("<ul class='nav-full'>
+        <img src='http://estes-park.com/sites/all/themes/estesparktwo/images/hamburger.png' id='logo-home' onclick='handleMenu(0);'>
+        <li onclick='handleMenu(2);'>Profile</li>
+        <li>User Guide</li>
+        <li onclick='handleMenu(3);'>Get Quotation</li>
+        <li onclick='handleLogout();'>Logout</li>
+        </ul>")
+    else
+      $(".nav").empty()
+      $(".nav").append("<ul class='nav-full'>
+        <img src='http://estes-park.com/sites/all/themes/estesparktwo/images/hamburger.png' id='logo-home' onclick='handleMenu(0);'>
+        <li>User Guide</li>
+        <li>Location List</li>
+        </ul>")
+  else if value == 2
+    hideAll()
+    $(".profile").show()
+  else if value == 3
+    hideAll()
+    $(".form_1").show()
+  else
+    $(".nav").empty()
+    $(".nav").append("<ul class='nav'><img src='http://estes-park.com/sites/all/themes/estesparktwo/images/hamburger.png' id='logo-home' onclick='handleMenu(1);'></ul>")
+#---------------------------------------------------------------
 handleStepDisplay = () ->
   $("#steps").empty()
   $("#steps").append(
     "<td class="+FormStat1+">1 | Site Details</td>
     <td class="+FormStat2+">2 | Service Details</td>
-    <td class="+FormStat3+">3 | Other Service Details</td>
-    <td class="+FormStat4+">4 | Preview Quotation</td>
-    <td class="+FormStat5+">5 | Quotation Summary</td>")
-  $("#steps2").empty()
-  $("#steps2").append(
-    "<td class="+FormStat1+">1 | Site Details</td>
-    <td class="+FormStat2+">2 | Service Details</td>
-    <td class="+FormStat4+">3 | Preview Quotation</td>
-    <td class="+FormStat5+">4 | Quotation Summary</td>")
+    <td class="+FormStat3+">3 | Other Service Details</td>")
 #---------------------------------------------------------------
 determineUPE = (val) ->
   console.log "Determining UPE:" +val
@@ -120,6 +213,187 @@ determineLink = (val) ->
     "Inter Metro"
   else if val == '3'
     "Inter Region"
+#---------------------------------------------------------------
+handleCalculation = ->
+  w = valRwiring[valArr]
+  valOd = (10000+(valRquantity[valArr]*1250)+(1*w))
+  valO = valOd.toFixed(2)
+  console.log "valO: " +valO
+
+  console.log "valSlevel: " +valSlevel[valArr]
+  if valSlevel[valArr] > 0 && valSlevel[valArr] < 4
+    SL = 1
+  else if valSlevel[valArr] > 3 && valSlevel[valArr] < 6
+    SL = 2
+
+  console.log "valUPE1: " +valUPE1[valArr]+ " valCont: " +valContract[valArr]
+  if valUPE1[valArr] == '1'
+    if valContract[valArr] > 0 && valContract[valArr] < 4
+        UPE1 = 2799.96
+    else if valContract[valArr] > 3 && valContract[valArr] < 6
+        UPE1 = 1820.04
+  else if valUPE1[valArr] == '2'
+    if valContract[valArr] > 0 && valContract[valArr] < 4
+        UPE1 = 13950
+    else if valContract[valArr] > 3 && valContract[valArr] < 6
+        UPE1 = 9159.96
+  else
+    UPE1 = 0
+
+  console.log "valUPE2: " +valUPE2[valArr]+ " valCont: " +valContract[valArr]
+  if valUPE2[valArr] == '1'
+    if valContract[valArr] > 0 && valContract[valArr] < 4
+        UPE2 = 2799.96
+    else if valContract[valArr] > 3 && valContract[valArr] < 6
+        UPE2 = 1820.04
+  else if valUPE2[valArr] == '2'
+    if valContract[valArr] > 0 && valContract[valArr] < 4
+        UPE2 = 13950
+    else if valContract[valArr] > 3 && valContract[valArr] < 6
+        UPE2 = 9159.96
+  else
+    UPE2 = 0
+  valTUPE = ((SL*UPE1)+(SL*UPE2))/12
+  console.log "SL: " +SL+ " UPE1: " +UPE1+ " UPE2: " +UPE2+ " TUPE: " +valTUPE
+
+  S = (valSpeed[valArr]*7150)+38090
+  console.log "Speed: " +S
+
+  console.log "valSlevel: " +valSlevel[valArr]+ " valSlevel: " +valSclass[valArr]
+  if valSlevel[valArr] == '1'
+    if valSclass[valArr] == '1'
+      P = 1.5
+    else if valSclass[valArr] == '2'
+      P = 1.2
+    else if valSclass[valArr] == '3'
+      P = 1
+    else if valSclass[valArr] == '4'
+      P = 0.92
+  else if valSlevel[valArr] == '2'
+    if valSclass[valArr] == '1'
+      P = 1.95
+    else if valSclass[valArr] == '2'
+      P = 1.56
+    else if valSclass[valArr] == '3'
+      P = 1.3
+    else if valSclass[valArr] == '4'
+      P = 1.2
+  else if valSlevel[valArr] == '3'
+    if valSclass[valArr] == '1'
+      P = 2.1
+    else if valSclass[valArr] == '2'
+      P = 1.68
+    else if valSclass[valArr] == '3'
+      P = 1.4
+    else if valSclass[valArr] == '4'
+      P = 1.29
+  else if valSlevel[valArr] == '4'
+    if valSclass[valArr] == '1'
+      P = 2.25
+    else if valSclass[valArr] == '2'
+      P = 1.8
+    else if valSclass[valArr] == '3'
+      P = 1.5
+    else if valSclass[valArr] == '4'
+      P = 1.38
+  else if valSlevel[valArr] == '5'
+    if valSclass[valArr] == '1'
+      P = 2.7
+    else if valSclass[valArr] == '2'
+      P = 2.16
+    else if valSclass[valArr] == '3'
+      P = 1.8
+    else if valSclass[valArr] == '4'
+      P = 1.66
+  else if valSlevel[valArr] == '6'
+    if valSclass[valArr] == '1'
+      P = 2.85
+    else if valSclass[valArr] == '2'
+      P = 2.28
+    else if valSclass[valArr] == '3'
+      P = 1.9
+    else if valSclass[valArr] == '4'
+      P = 1.75
+
+  console.log "valContract: " +valContract[valArr]
+  if valContract[valArr] == 1
+    PC = 1.3
+  else if valContract[valArr] == 2
+    PC = 1.15
+  else if valContract[valArr] == 3
+    PC = 1
+  else if valContract[valArr] == 4
+    PC = .93
+  else if valContract[valArr] == 5
+    PC = .85
+
+  console.log "valCat1: " +valCat1[valArr]
+  if valCat1[valArr] == "CBA"
+    C1 = 1
+  else if valCat1[valArr] == "Non CBA"
+    C1 = 1.1
+  else if valCat1[valArr] == "Non CBA 2"
+    C1 = 1.2
+
+  console.log "valCat2: " +valCat2[valArr]
+  if valCat1[valArr] == "CBA"
+    C2 = 1
+  else if valCat1[valArr] == "Non CBA"
+    C2 = 1.1
+  else if valCat1[valArr] == "Non CBA 2"
+    C2 = 1.2
+  console.log "P: " +P+ " PC: " +PC+ " C1: " +C1+ " C2: " +C2
+  valTBW = ((S*P*PC*2*C1)+(S*P*PC*2*C2))/12
+  console.log "valTBW: " +valTBW
+
+  console.log "valScat: " +valScat[valArr]
+  if valScat[valArr] == '1'
+    L = 0
+  else if valScat[valArr] == '2'
+    L = 200
+  else if valScat[valArr] == '3'
+    L = 250
+
+  valIM = 2*S*L
+  console.log "valIM: " +valIM
+
+  if valStype[valArr] == '1'
+    T = 10000
+  else if valStype[valArr] == '2'
+    T = 2000
+
+  valAdd = T*valSdistance[valArr]/12
+  console.log "valAdd: " +valAdd
+  valMd = valAdd + valIM + valTBW + valTUPE
+  valM = valMd.toFixed(2)
+  console.log "valIM: " +valIM
+
+  if valRouter[valArr] == '1'
+    R = 351
+  else if valRouter[valArr] == '2'
+    R = 351
+  else if valRouter[valArr] == '3'
+    R = 351
+  valRd = R*valRquantity[valArr]
+  valR = valRd.toFixed(2)
+  console.log "valR: " +valR
+  valTd = valRd + valMd + valOd
+  valT = valTd.toFixed(2)
+  valMDd = valM-(valM*(valSdiscount[valArr]/100))
+  valMD = valMDd.toFixed(2)
+  valRDd = valR-(valR*(valRdiscount[valArr]/100))
+  valRD = valRDd.toFixed(2)
+  valTd = valMd + valRd
+  valT = valTd.toFixed(2)
+  valTDd = valMD*1 + 1*valRD
+  valTD = valTDd.toFixed(2)
+  valTDTd = valTD*0.6 + 1*valTD
+  valTDT = valTDTd.toFixed(2)
+
+#---------------------------------------------------------------
+@handleCancel = () ->
+  hideAll()
+  $(".profile").show()
 #---------------------------------------------------------------
 @handleChange = (value, data) ->
   console.log "Value: " +value+ " | Data: " +data
@@ -264,53 +538,12 @@ determineLink = (val) ->
     handleStepDisplay()
   #---------------------------------------------------------------
   else if value == 3
-    if valLoc == 1
-      $(".form_3").dialog("close")
-    else
-      $(".form_4").show()
-      $(".form_3").hide()
-      FormStat3 = ''
-      FormStat4 = 'active'
-    valRouter[valArr]    = $("#router").val()
-    valRbom[valArr]      = $("#R_BOM").val()
-    valRquantity[valArr] = $("#R_Quantity").val()
-    valRdiscount[valArr] = $("#R_Discount").val()
-    valRwiring[valArr]   = $("#R_Wiring").val()
+    valRouter[valArr]     = $("#router").val()
+    valRbom[valArr]       = $("#R_BOM").val()
+    valRquantity[valArr]  = $("#R_Quantity").val()
+    valRdiscount[valArr]  = $("#R_Discount").val()
+    valRwiring[valArr]    = $("#R_Wiring").val()
     console.log "Router:" +valRouter[valArr]+ " | BOM:" +valRbom[valArr]+ " | Quantity:" +valRquantity[valArr]+ " | Discount:" +valRdiscount[valArr]+ " | Wiring:" +valRwiring[valArr]
-    handleStepDisplay()
-    $(".table-location").append(
-      "<tr>
-          <td>"+valArr+"</th>
-          <td>"+valName1[valArr]+"</th>
-          <td>"+valCat1[valArr]+"</th>
-          <td>"+determineUPE(valUPE1[valArr])+"</th>
-          <td>"+valName2[valArr]+"</th>
-          <td>"+valCat2[valArr]+"</th>
-          <td>"+determineUPE(valUPE2[valArr])+"</th>
-          <td>"+valSpeed[valArr]+" Mbps</th>
-          <td>"+determineClass(valSclass[valArr])+"</td>
-          <td>"+determineSlevel(valSlevel[valArr])+"</th>
-          <td>"+valContract[valArr]+ " Years</th>
-          <td>"+determineLink(valScat[valArr])+"</th>
-          <td>"+valSdiscount[valArr]+" %</th>
-      </tr>"
-    )
-  #---------------------------------------------------------------
-  else if value == 4
-    $(".contact").dialog()
-  #---------------------------------------------------------------
-  else if value == 5
-    if valLoc == 1
-      $(".form_2").dialog("close")
-      $(".form_4").dialog({ height: 800, width:1000 })
-    else
-      $(".form_4").show()
-      $(".form_2").hide()
-      FormStat2 = ''
-      FormStat4 = 'active'
-    handleStepDisplay()
-  #---------------------------------------------------------------
-  else if value == 6
     $(".contact").dialog()
 #---------------------------------------------------------------
 @handleLocation = () ->
@@ -320,19 +553,47 @@ determineLink = (val) ->
   console.log "Array Index:" +valArr
   $(".form_1").dialog({ height: 500, width:1000 })
 #---------------------------------------------------------------
-@handleSubmit = ()->
-  console.log "Submitting Form"
-  valUname = $("#fv_name").val()
-  valUphone = $("#fv_phone").val()
-  valUfax = $("#fv_fax").val()
-  valUemail = $("#fv_email").val()
-  $(".contact").dialog("close")
-  $(".form_5").show()
-  $(".form_4").hide()
-  FormStat4 = ''
-  FormStat5 = 'active'
-  handleStepDisplay()
-  $("#f_name").append(valUname)
-  $("#f_phone").append(valUphone)
-  $("#f_fax").append(valUfax)
-  $("#f_email").append(valUemail)
+@handleSubmit = (value)->
+  if value == 1
+    console.log "Calculating"
+    handleCalculation()
+    console.log "Submitting Form"
+    valUname = $("#fv_name").val()
+    valUphone = $("#fv_phone").val()
+    valUfax = $("#fv_fax").val()
+    valUemail = $("#fv_email").val()
+    $(".contact").dialog("close")
+    $(".form_4").show()
+    $(".form_3").hide()
+    FormStat3 = ''
+    FormStat1 = 'active'
+    handleStepDisplay()
+    $("#f_O").append(valO)
+    $("#f_M").append(valM)
+    $("#f_R").append(valR)
+    $("#f_MD").append(valMD)
+    $("#f_RD").append(valRD)
+    $("#f_T").append(valT)
+    $("#f_TD").append(valTD)
+    $("#f_TDT").append(valTDT)
+    $("#f_name").append(valUname)
+    $("#f_phone").append(valUphone)
+    $("#f_fax").append(valUfax)
+    $("#f_email").append(valUemail)
+    $(".notif").append("<h1 id='success'>Form Submitted</h1>")
+  else if value == 2
+    $(".form_4").hide()
+    $(".profile").show()
+    $(".table-location").append("<tr><td>1</td>
+    <td>"+valName1[valArr]+"</td>
+    <td>"+valCat1[valArr]+"</td>
+    <td>"+valUPE1[valArr]+"</td>
+    <td>"+valName2[valArr]+"</td>
+    <td>"+valCat2[valArr]+"</td>
+    <td>"+valUPE2[valArr]+"</td>
+    <td>"+valSpeed[valArr]+"</td>
+    <td>"+valSclass[valArr]+"</td>
+    <td>"+valSlevel[valArr]+"</td>
+    <td>"+valContract[valArr]+"</td>
+    <td>"+valStatus+"</td>
+    </tr>")

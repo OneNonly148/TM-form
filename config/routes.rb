@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get '/load_state', to: 'main#load_state'
   get '/load_loc', to: 'main#load_loc'
   get '/load_UPE', to: 'main#load_UPE'
+  get '/login', to: 'main#login'
+  get '/stat', to: 'main#user_stat'
+  get '/logout', to: 'main#logout'
+  get '/submit_data', to: 'main#save_data'
 end

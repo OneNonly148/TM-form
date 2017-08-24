@@ -32,7 +32,7 @@ Location.create(name: 'Baling', category: 'Non CBA 2')
 Location.create(name: 'Jeli', category: 'Non CBA 2')
 Location.create(name: 'Kota Bharu', category: 'Non CBA')
 Location.create(name: 'Bandar Tun Razak', category: 'CBA')
-Location.create(name: 'Air Molek', category: 'Melaka')
+Location.create(name: 'Air Molek', category: 'Non CBA')
 Location.create(name: 'Ayer Keroh', category: 'CBA')
 
 Location.create(name: 'Bahau', category: 'Non CBA')

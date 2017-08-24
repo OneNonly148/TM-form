@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  site: MyString
+  price: MyString
+  fiber: MyString
+  distance: 1
+  speed: 1
+  contract: 1
+  package: MyString
+  brand: MyString
+  service: MyString
+  location: MyString
+  bundle: false
+  discount: 1
+
+two:
+  site: MyString
+  price: MyString
+  fiber: MyString
+  distance: 1
+  speed: 1
+  contract: 1
+  package: MyString
+  brand: MyString
+  service: MyString
+  location: MyString
+  bundle: false
+  discount: 1

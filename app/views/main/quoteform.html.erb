@@ -1,46 +1,84 @@
-<br/><br/><table class="form-flow">
-  <tr id="steps"></tr>
-</table><br/><br/>
-
-<form class="form_1">
-  <table class="form-table">
-    <tr class="form-row">
-      <td >
-        <h2>Site A Details</h2><hr/><br/>
-        <input type="text" id="name_1" placeholder="Site Name" class="form"></input><br/><br/>
-        <select type="dropdown" id="state_1" class="form" onchange="handleChange(1, $(this).val());">
-        </select><br/><br/>
-        <select type="dropdown" id="loc_1" class="form" onchange="handleChange(2, $(this).val());">
-        </select><br/><br/>
-        <div id="cat_1"></div><br/>
-        <select type="text" id="UPE_1" class="form">
-          <option value="0">Select UPE configuration</option>
-          <option value="1">Shared</option>
-          <option value="2">Dedicated</option>
-          <option value="3">-</option>
-        </select>
-      </td>
-      <td>
-        <h2>Site B Details  </h2><hr/><br/>
-        <input type="text" id="name_2" placeholder="Site Name" class="form"></input><br/><br/>
-        <select type="dropdown" id="state_2" class="form" onchange="handleChange(3, $(this).val());">
-        </select><br/><br/>
-        <select type="dropdown" id="loc_2" class="form" onchange="handleChange(4, $(this).val());">
-        </select><br/><br/>
-        <div id="cat_2"></div><br/>
-        <select type="text" id="UPE_2" class="form">
-          <option value="0">Select UPE configuration</option>
-          <option value="1">Shared</option>
-          <option value="2">Dedicated</option>
-          <option value="3">-</option>
-        </select>
-      </td>
+<form class="login">
+  <h1>Login</h1>
+  <div class="notif"></div>
+  Login Name<br/>
+  <input id="user" placeholder="Email" class="form"></input><br/><br/>
+  Password<br/>
+  <input id="password" type="password" placeholder="Password" class="form"></input><br/><hr/>
+  <input type="button" value="Submit" onclick="handleLogin();" class="btn btn-primary"></input>
+</form>
+<div class="profile">
+  <h2>Metro E Quotation</h2>
+  <table class="table-location">
+    <tr>
+      <th>No.</th>
+      <th>Site A</th>
+      <th>Location</th>
+      <th>UPE A</th>
+      <th>Site B</th>
+      <th>Location</th>
+      <th>UPE B</th>
+      <th>Speed</th>
+      <th>Class</th>
+      <th>Level</th>
+      <th>Contract</th>
+      <th>Status</th>
     </tr>
-  </table><br/><br/><hr/>
+  </table>
+  <h2>Direct Quotation</h2>
+  <table class="table-location">
+    <tr>
+      <th>No.</th>
+      <th>Site Name</th>
+      <th>Price</th>
+      <th>Fiber</th>
+      <th>Distance</th>
+      <th>Location</th>
+      <th>Speed</th>
+      <th>Contract</th>
+      <th>Package</th>
+      <th>Router Brand</th>
+      <th>Location</th>
+      <th>Bundled Item</th>
+      <th>Discount</th>
+    </tr>
+  </table>
+</div>
+<form class="form_1">
+  <div class="notif"></div>
+  <h1>1 | Site Details</h1>
+  <h2>Site A Details</h2><hr/><br/>
+  <input type="text" id="name_1" placeholder="Site Name" class="form"></input><br/><br/>
+  <select type="dropdown" id="state_1" class="form" onchange="handleChange(1, $(this).val());">
+  </select><br/><br/>
+  <select type="dropdown" id="loc_1" class="form" onchange="handleChange(2, $(this).val());">
+  </select><br/><br/>
+  <div id="cat_1"></div><br/>
+    <select type="text" id="UPE_1" class="form">
+    <option value="0">Select UPE configuration</option>
+    <option value="1">Shared</option>
+    <option value="2">Dedicated</option>
+    <option value="3">-</option>
+  </select>
+  <h2>Site B Details  </h2><hr/><br/>
+  <input type="text" id="name_2" placeholder="Site Name" class="form"></input><br/><br/>
+  <select type="dropdown" id="state_2" class="form" onchange="handleChange(3, $(this).val());">
+  </select><br/><br/>
+  <select type="dropdown" id="loc_2" class="form" onchange="handleChange(4, $(this).val());">
+  </select><br/><br/>
+  <div id="cat_2"></div><br/>
+  <select type="text" id="UPE_2" class="form">
+    <option value="0">Select UPE configuration</option>
+    <option value="1">Shared</option>
+    <option value="2">Dedicated</option>
+    <option value="3">-</option>
+  </select><br/><br/><hr/>
   <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(1);"></input>
 </form>
 
 <form class="form_2">
+  <div class="notif"></div>
+  <h1>2 | Service Details</h1>
   <h2>Service</h2><hr/>
   Speed <input type="text" id="amount-speed"></input><br/><br/><div class="slide"><div id="slide-speed"></div></div><br/><br/>
   <select id="s_class" type="dropdown" class="form">
@@ -73,11 +111,13 @@
     <option value="1">New</option>
     <option value="2">Existing</option>
   </select><br/><br/>
-  Distance <input type="text" id="amount-distance"></input><br/><br/><div class="slide"><div id="slide-distance"></div></div><br/><br/>
-  <input type="button" value="Submit" class="btn btn-primary" onclick="handleNext(2);"></input>
+  Distance <input type="text" id="amount-distance"></input><br/><br/><div class="slide"><div id="slide-distance"></div></div><br/><hr/>
+  <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(2);"></input>
 </form>
 
 <form class="form_3">
+  <div class="notif"></div>
+  <h1>3 | Other Service Details</h1>
   <h2>Router</h2><hr/>
   <select type="dropdown" id="router" class="form">
     <option value="0">Select Router Brand</option>
@@ -89,85 +129,30 @@
   <input type="text" id="R_Quantity" placeholder="Quantity" class="form"></input><br/><br/>
   <input type="text" id="R_Discount" placeholder="Discount" class="form"></input><br/><br/>
   <h2>Internal Wiring</h2><hr/>
-  <input type="text" id="R_Wiring" placeholder="Internal Wiring" class="form"></input><br/><br/>
+  <input type="text" id="R_Wiring" placeholder="Internal Wiring" class="form"></input><br/><br/><hr/>
   <input type="button" value="Next" class="btn btn-primary" onclick="handleNext(3);"></input>
-</form>
-
-<form class="form_4">
-  <hr/><table>
-    <tr>
-        <td>Total One Time Charge</td>
-        <td>RM Something</td>
-    </tr>
-    <tr>
-        <td>Total Recurring Monthly Charge</td>
-        <td>RM Something</td>
-    </tr>
-    <tr>
-        <td>Total Recurring Monthly Charge (+Discount)</td>
-        <td>RM Something</td>
-    </tr>
-    <tr>
-        <td>Total Recurring Monthly Charge (+Discount +Tax)</td>
-        <td>RM Something</td>
-    </tr>
-  </table><br/>
-  <input type="button" value="Submit" class="btn btn-primary" onclick="handleNext(4);"></input>
-  <input type="button" value="Add Location" class="btn btn-primary" onclick="handleLocation();"></input><hr/><br/>
-  <table class="table-location">
-    <tr>
-        <th>No.</th>
-        <th>Site A</th>
-        <th>Location</th>
-        <th>UPE</th>
-        <th>Site B</th>
-        <th>Location</th>
-        <th>UPE</th>
-        <th>Speed</th>
-        <th>Class of Service</th>
-        <th>Service Level</th>
-        <th>Contract</th>
-        <th>Inter-link</th>
-        <th>Discount</th>
-    </tr>
-  </table>
   <div class="contact">
     <h2>Contact Information</h2>
     <input type="text" id="fv_name" placeholder="Name" class="form"></input><br/><br/>
     <input type="text" id="fv_phone" placeholder="Phone No." class="form"></input><br/><br/>
     <input type="text" id="fv_fax" placeholder="Fax No." class="form"></input><br/><br/>
     <input type="text" id="fv_email" placeholder="Email" class="form"></input><hr/>
-    <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit();"></input>
+    <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit(1);"></input>
   </div>
 </form>
 
-<form class="form_5">
-  <div class="form-head">
-    <img src='http://3.bp.blogspot.com/-V5rXmZdlkks/V3XcQ5FA3wI/AAAAAAAAFPg/rKEvbRSim9YySSxZ0rvsIfA4ge72E1UzwCK4B/s1600/TM%2Bvector%2Blogo.png' alt="TM Logo" id="form-logo">
-    <br/><label><b>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
-    <label id="f_name"></label><br/>
-    <label><b>Phone No&nbsp;: </b></label>
-    <label id="f_phone"></label><br/>
-    <label><b>Fax No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
-    <label id="f_fax"></label><br/>
-    <label><b>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b></label>
-    <label id="f_email"></label><br/><hr/><br/>
-  </div>
-  <table class="table-location">
-    <tr>
-        <th>No.</th>
-        <th>Site A</th>
-        <th>Location</th>
-        <th>UPE</th>
-        <th>Site B</th>
-        <th>Location</th>
-        <th>UPE</th>
-        <th>Speed</th>
-        <th>Class of Service</th>
-        <th>Service Level</th>
-        <th>Contract</th>
-        <th>Inter-link</th>
-        <th>Discount</th>
-    </tr>
-  </table>
+<form class="form_4">
+  <h2>Summary</h2>
+  <table class="table-summary">
+      <tr><th>One Time Charge (RM)</th><td id="f_O"></td><th>Customer Name</th><td id="f_name"></td></tr>
+      <tr><th>Monthly Metro E (RM)</th><td id="f_M"></td><th>Phone No.</th><td id="f_phone"></td></tr>
+      <tr><th>Monthly Router (RM)</th><td id="f_R"></td><th>Fax No.</th><td id="f_fax"></td></tr>
+      <tr><th>Monthly Metro E +Discount (RM)</th><td id="f_MD"></td><th>Email</th><td id="f_email"></td></tr>
+      <tr><th>Monthly Router +Discount (RM)</th><td id="f_RD"></td></tr>
+      <tr><th>Total (RM)</th><td id="f_T"></td></tr>
+      <tr><th>Total +Discount (RM)</th><td id="f_TD"></td></tr>
+      <tr><th>Total +Discount +Tax (RM)</th><td id="f_TDT"></td></tr>
+  </table><br/><hr/>
+  <input type="button" value="Cancel" class="btn btn-primary" onclick="handleCancel();"></input>
+  <input type="button" value="Submit" class="btn btn-primary" onclick="handleSubmit(2)"></input>
 </form>

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  siteA: MyString
+  locatA: MyString
+  UPEA: MyString
+  siteB: MyString
+  locatB: MyString
+  UPEB: MyString
+  speed: 1
+  class: MyString
+  level: MyString
+  contract: 1
+  type: 
+  distance: 1
+  inter_link: MyString
+  discount: 1
+  Rbrand: MyString
+  RBOM: MyString
+  RQuantity: 1
+  RDiscount: 1
+  intWiring: MyString
+
+two:
+  user: 
+  siteA: MyString
+  locatA: MyString
+  UPEA: MyString
+  siteB: MyString
+  locatB: MyString
+  UPEB: MyString
+  speed: 1
+  class: MyString
+  level: MyString
+  contract: 1
+  type: 
+  distance: 1
+  inter_link: MyString
+  discount: 1
+  Rbrand: MyString
+  RBOM: MyString
+  RQuantity: 1
+  RDiscount: 1
+  intWiring: MyString
