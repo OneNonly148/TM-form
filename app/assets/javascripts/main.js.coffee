@@ -9,6 +9,11 @@ dataLogin = true
 tempUser = ''
 tempPassword = 'foobar'
 
+valUname = ''
+valUphone = ''
+valUfax = ''
+valUemail = ''
+
 valName1  = new Array(10)
 valCat1   = new Array(10)
 valUPE1   = new Array(10)
@@ -568,22 +573,69 @@ handleCalculation = ->
     FormStat3 = ''
     FormStat1 = 'active'
     handleStepDisplay()
+    $("#f_O").empty()
     $("#f_O").append(valO)
+    $("#f_M").empty()
     $("#f_M").append(valM)
+    $("#f_R").empty()
     $("#f_R").append(valR)
+    $("#f_MD").empty()
     $("#f_MD").append(valMD)
+    $("#f_RD").empty()
     $("#f_RD").append(valRD)
+    $("#f_T").empty()
     $("#f_T").append(valT)
+    $("#f_TD").empty()
     $("#f_TD").append(valTD)
+    $("#f_TDT").empty()
     $("#f_TDT").append(valTDT)
+    $("#f_name").empty()
     $("#f_name").append(valUname)
+    $("#f_phone").empty()
     $("#f_phone").append(valUphone)
+    $("#f_fax").empty()
     $("#f_fax").append(valUfax)
+    $("#f_email").empty()
     $("#f_email").append(valUemail)
     $(".notif").append("<h1 id='success'>Form Submitted</h1>")
   else if value == 2
     $(".form_4").hide()
     $(".profile").show()
+    $.ajax
+      url: '/id.json'
+      type: 'get'
+      success: (result) ->
+        $.ajax
+          url: '/submit_data.json'
+          type: 'get'
+          data:
+            valID: JSON.stringify result
+            valUname: valUname
+            valUphone: valUphone
+            valUfax: valUfax
+            valUemail: valUemail
+            valName1: valName1[valArr]
+            valCat1: valCat1[valArr]
+            valUPE1: valUPE1[valArr]
+            valName2: valName2[valArr]
+            valCat2: valCat2[valArr]
+            valUPE2: valUPE2[valArr]
+            valSpeed: valSpeed[valArr]
+            valSclass: valSclass[valArr]
+            valSlevel: valSlevel[valArr]
+            valContract: valContract[valArr]
+            valScat: valScat[valArr]
+            valSdiscount: valSdiscount[valArr]
+            valStype: valStype[valArr]
+            valSdistance: valSdistance[valArr]
+            valRouter: valRouter[valArr]
+            valRbom: valRbom[valArr]
+            valRquantity: valRquantity[valArr]
+            valRdiscount: valRdiscount[valArr]
+            valRwiring: valRwiring[valArr]
+
+            valStatus: 'Pending'
+
     $(".table-location").append("<tr><td>1</td>
     <td>"+valName1[valArr]+"</td>
     <td>"+valCat1[valArr]+"</td>

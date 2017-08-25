@@ -1,45 +1,55 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: 
-  siteA: MyString
-  locatA: MyString
-  UPEA: MyString
-  siteB: MyString
-  locatB: MyString
-  UPEB: MyString
-  speed: 1
-  class: MyString
-  level: MyString
-  contract: 1
-  type: 
-  distance: 1
-  inter_link: MyString
-  discount: 1
-  Rbrand: MyString
-  RBOM: MyString
-  RQuantity: 1
-  RDiscount: 1
-  intWiring: MyString
+  user: one
+  valName1: MyString
+  valCat1: MyString
+  valUPE1: MyString
+  valName2: MyString
+  valCat2: MyString
+  valUPE2: MyString
+  valSpeed: MyString
+  valSclass: MyString
+  valSlevel: MyString
+  valContract: MyString
+  valScat: MyString
+  valSdiscount: MyString
+  valStype: MyString
+  valSdistance: MyString
+  valRouter: MyString
+  valRbom: MyString
+  valRquantity: MyString
+  valRdiscount: MyString
+  valRwiring: MyString
+  valStatus: MyString
+  valUname: MyString
+  valUphone: MyString
+  valUfax: MyString
+  valUemail: MyString
 
 two:
-  user: 
-  siteA: MyString
-  locatA: MyString
-  UPEA: MyString
-  siteB: MyString
-  locatB: MyString
-  UPEB: MyString
-  speed: 1
-  class: MyString
-  level: MyString
-  contract: 1
-  type: 
-  distance: 1
-  inter_link: MyString
-  discount: 1
-  Rbrand: MyString
-  RBOM: MyString
-  RQuantity: 1
-  RDiscount: 1
-  intWiring: MyString
+  user: two
+  valName1: MyString
+  valCat1: MyString
+  valUPE1: MyString
+  valName2: MyString
+  valCat2: MyString
+  valUPE2: MyString
+  valSpeed: MyString
+  valSclass: MyString
+  valSlevel: MyString
+  valContract: MyString
+  valScat: MyString
+  valSdiscount: MyString
+  valStype: MyString
+  valSdistance: MyString
+  valRouter: MyString
+  valRbom: MyString
+  valRquantity: MyString
+  valRdiscount: MyString
+  valRwiring: MyString
+  valStatus: MyString
+  valUname: MyString
+  valUphone: MyString
+  valUfax: MyString
+  valUemail: MyString

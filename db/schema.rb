@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823020242) do
+ActiveRecord::Schema.define(version: 20170825012611) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -19,50 +19,34 @@ ActiveRecord::Schema.define(version: 20170823020242) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "quote2s", force: :cascade do |t|
-    t.string "site"
-    t.string "price"
-    t.string "fiber"
-    t.integer "distance"
-    t.integer "speed"
-    t.integer "contract"
-    t.string "package"
-    t.string "brand"
-    t.string "service"
-    t.string "location"
-    t.boolean "bundle"
-    t.integer "discount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "quotes", force: :cascade do |t|
     t.integer "user_id"
-    t.string "siteA"
-    t.string "locatA"
-    t.string "UPEA"
-    t.string "siteB"
-    t.string "locatB"
-    t.string "UPEB"
-    t.integer "speed"
-    t.string "class"
-    t.string "level"
-    t.integer "contract"
-    t.string "type"
-    t.integer "distance"
-    t.string "inter_link"
-    t.integer "discount"
-    t.string "Rbrand"
-    t.string "RBOM"
-    t.integer "RQuantity"
-    t.integer "RDiscount"
-    t.string "intWiring"
+    t.string "valName1"
+    t.string "valCat1"
+    t.string "valUPE1"
+    t.string "valName2"
+    t.string "valCat2"
+    t.string "valUPE2"
+    t.string "valSpeed"
+    t.string "valSclass"
+    t.string "valSlevel"
+    t.string "valContract"
+    t.string "valScat"
+    t.string "valSdiscount"
+    t.string "valStype"
+    t.string "valSdistance"
+    t.string "valRouter"
+    t.string "valRbom"
+    t.string "valRquantity"
+    t.string "valRdiscount"
+    t.string "valRwiring"
+    t.string "valStatus"
+    t.string "valUname"
+    t.string "valUphone"
+    t.string "valUfax"
+    t.string "valUemail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "phone"
-    t.string "fax"
-    t.string "email"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 

@@ -16,7 +16,12 @@ class MainController < ApplicationController
       format.json { render json: current_user.to_json, status: :ok }
     end
   end
-
+  def user_id
+    id = $user_id
+    respond_to do |format|
+      format.json { render json: id.to_json, status: :ok }
+    end
+  end
   def user_stat
     log = $logged_in
     respond_to do |format|
@@ -90,6 +95,7 @@ class MainController < ApplicationController
   end
 
   def save_data
+    valID = params["valID"]
     valUname = params["valUname"]
     valUphone = params["valUphone"]
     valUfax = params["valUfax"]
@@ -113,6 +119,8 @@ class MainController < ApplicationController
     valRquantity = params["valRquantity"]
     valRdiscount = params["valRdiscount"]
     valRwiring = params["valRwiring"]
-    @save = Quote.new()
+    valStatus = params["valStatus"]
+    @save = Quote.create(user_id: valID, valName1: valName1, valCat1: valCat1, valUPE1: valUPE1, valName2: valName2, valCat2: valCat2, valUPE2: valCat2, valSpeed: valSpeed, valSclass: valSclass, valSlevel: valSlevel, valContract: valContract, valScat: valScat, valSdiscount: valSdiscount, valStype: valStype, valSdistance: valSdistance, valRouter: valRouter, valRbom: valRbom, valRquantity: valRquantity,
+    valRdiscount: valRdiscount, valRwiring: valRwiring, valStatus: valStatus, valUname: valUname, valUphone: valUphone, valUfax: valUfax, valUemail: valUemail)
   end
 end

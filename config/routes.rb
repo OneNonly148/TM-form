@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/load_UPE', to: 'main#load_UPE'
   get '/login', to: 'main#login'
   get '/stat', to: 'main#user_stat'
+  get '/id', to: 'main#user_id'
   get '/logout', to: 'main#logout'
   get '/submit_data', to: 'main#save_data'
 end
